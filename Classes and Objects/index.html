@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This is line is not required however, it is a good idea to 
+      to help scale to the monitor size-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Simulator</title>
+    <!--You are leaving HTML and about to start CSS, you know this 
+      due to the style tags-->
+    <style>
+        /* This is styling CSS comment, notioce the diff start and end syntax */
+        /*Style the body */
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            margin: 0;
+            padding: 20px;
+        }
+        #game-container{
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: darkblue;
+            border: 1px solid yellow;
+            border-radius: 8px;
+        }
+        .coin{
+            border: 1px solid white;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        button{
+            padding: 5px 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<!--Using HTML our body section starts here-->
+<body>
+    <div id="game-container">
+        <h1>Football Manager</h1>
+        <div id="directions">
+            <p>Welcome to Football Manager! Use this console to keep track of all palyers and coaches.</div>
+            <p>Each time you click on a player that has been drafted, credits will transfer from the Manager to the Team account</p>
+        </div>
+    </div>
+    <div id="credits">
+        <h2>Coach Credits: <span id="credits-amount">0</span></h2>
+    </div>
+    <div id="coin-container">
+        <!-- ... -->
+    </div>
+    <!-- We are leaving HTML and going into JavaScript-->
+    <script>
+        // Create our class for the stadium
+        class FootballStadium{
+            constructor(name, serviceCost){
+                this.name = name;
+                this.serviceCost = serviceCost;
+            }
+            // This is a method, it is a function that is part of a class
+            // This method will service the ship and add credits
+            service(){
+                game.credits = game.credits + this.serviceCost;
+                game.updateCredits();
+            }
+        
+        }
+        //Create our game class
+        class Game{
+            constructor(){
+                this.credits = 0;
+                this.ships=[];
+            }
+            //Create a method to update the credits on the page
+            updateCreditsDisplay(){
+                document.getElementbyId("credits-amount").innerText = this.credits;
+            }
+            //Create a method to add a ship to the page
+            addCoin(coin){
+                this.coin.push(coin);
+                this.displayCoin(coin);
+            }
+            //Create a method to display a ship on the page
+            displayCoin(coin){
+                const container = document.getElementbyId("coins-container");
+                const shipDiv = document.createElement("div");
+                coinDiv.classList.add("coin");
+                coinDiv.innerHTML = "<h2>" + coin.name + "</h2><p>Player Cost: " + coin.playerCost + "credits";
+                CoinDiv.onclick = function(){
+                    coin.player();
+                };
+                container.appendChild(coinDiv);
+
+            }
+        }
+
+        //Create a new game object instance from our class.
+        const game = new Game();
+
+        //Create a new coin object instance from our class.
+        const coins = [
+            new Player("Patrick Mahomes", 200),
+            new Player("Travis Kelce", 50),
+            new Player("JuJu Smith", 70),
+            new Player("Tom Brady", 120)
+        ];
+    </script>
+    
+</body>
+</html>
